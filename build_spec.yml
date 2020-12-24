@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      - docker login -u guruvamsi --password secret
+      - docker build -it guruvamsi/py:latest .
+      - docker push guruvamsi/py:latest
+  build:
+    commands:
+      - echo Build started on `date`
+      - aws ec2 login to instance using keypair store in s3 or by saving pem data in ssm parameters or env varibles
+      - docker should already be there in the ec2
+      - docker pull guruvamsi/py:latest
+      - docker images
+      - docker run -d --name some guruvamsi/py:latest
+      - exit
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - docker logs some
+      - monitor everything in cloud watch logs
