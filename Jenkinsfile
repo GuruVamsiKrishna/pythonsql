@@ -12,7 +12,8 @@ pipeline{
         stage('Docker build'){
             steps{
                 echo "build the docker image with the current build"
-                sh "docker images"
+                sh 'ls -al'
+                sh 'docker build py -t .'
             }
         }
         stage('Docker push to hub'){
