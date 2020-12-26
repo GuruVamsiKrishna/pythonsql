@@ -15,10 +15,11 @@ pipeline{
                 sh 'ls -al'
                 sshagent(['ec2login']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14'
+                    ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14
                     ls -al
                     echo $USER
-                    docker images"""
+                    docker images
+                    """
                 }
             }
         }
