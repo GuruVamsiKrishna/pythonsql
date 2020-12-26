@@ -16,8 +16,8 @@ pipeline{
                 sshagent(['ec2login']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14
-                    ls -al
-                    docker images
+                    ssh ubuntu@52.66.82.14 ls -al
+                    ssh ubuntu@52.66.82.14 sudo docker images
                     """
                 }
             }
