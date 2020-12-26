@@ -14,10 +14,11 @@ pipeline{
                 echo "build the docker image with the current build"
                 sh 'ls -al'
                 sshagent(['ec2login']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14'
-                    sh 'ls -al'
+                    sh """
+                    ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14'
+                    ls -al
                     echo $USER
-                    sh 'docker images'
+                    docker images"""
                 }
             }
         }
