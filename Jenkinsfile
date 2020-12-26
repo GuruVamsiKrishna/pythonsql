@@ -17,7 +17,6 @@ pipeline{
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14
                     ls -al
-                    echo $USER
                     docker images
                     """
                 }
