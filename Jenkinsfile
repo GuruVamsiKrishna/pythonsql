@@ -45,6 +45,8 @@ pipeline{
                 """
                 }
             }
+            
         }
+        post{always{emailext body: 'hello from jenkins job pipeline', subject: 'Jenkins', to: 'krishnabgvk2691@gmail.com'}}
     }
 }
