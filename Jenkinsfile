@@ -12,6 +12,7 @@ pipeline{
         stage('Docker build'){
             steps{
                 echo "build the docker image with the current build"
+                sh "docker images"
             }
         }
         stage('Docker push to hub'){
