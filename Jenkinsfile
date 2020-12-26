@@ -18,6 +18,7 @@ pipeline{
                     ssh -o StrictHostKeyChecking=no ubuntu@15.206.73.0
                     ssh ubuntu@15.206.73.0 ls -al
                     ssh ubuntu@15.206.73.0 sudo docker images
+                    ssh docker rm -f web1
                     """
                 }
             }
