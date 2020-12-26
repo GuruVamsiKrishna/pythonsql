@@ -13,7 +13,11 @@ pipeline{
             steps{
                 echo "build the docker image with the current build"
                 sh 'ls -al'
-                sh 'docker build py -t .'
+                sshagent(['ec2login']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14'
+                    sh 'ls -al'
+                    sh 'sudo docker images'
+                }
             }
         }
         stage('Docker push to hub'){
