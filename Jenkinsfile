@@ -15,9 +15,9 @@ pipeline{
                 sh 'ls -al'
                 sshagent(['ec2login']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ubuntu@52.66.82.14
-                    ssh ubuntu@52.66.82.14 ls -al
-                    ssh ubuntu@52.66.82.14 sudo docker images
+                    ssh -o StrictHostKeyChecking=no ubuntu@15.206.73.0
+                    ssh ubuntu@15.206.73.0 ls -al
+                    ssh ubuntu@15.206.73.0 sudo docker images
                     """
                 }
             }
@@ -27,9 +27,9 @@ pipeline{
                 echo "push the builded docker to hub"
                 sshagent(['ec2login']) {
                 sh """
-                ssh ubuntu@52.66.82.14 sudo docker build -t py .
-                ssh ubuntu@52.66.82.14 sudo docker images
-                ssh ubuntu@52.66.82.14 sudo docker run -d --name web1 py
+                ssh ubuntu@15.206.73.0 sudo docker build -t py .
+                ssh ubuntu@15.206.73.0 sudo docker images
+                ssh ubuntu@15.206.73.0 sudo docker run -d --name web1 py
                 """
                 }
             }
@@ -39,8 +39,8 @@ pipeline{
                 echo "deploy the container"
                 sshagent(['ec2login']) {
                 sh """
-                ssh ubuntu@52.66.82.14 sudo docker ps -a
-                ssh ubuntu@52.66.82.14 sudo docker logs web1
+                ssh ubuntu@15.206.73.0 sudo docker ps -a
+                ssh ubuntu@15.206.73.0 sudo docker logs web1
                 """
                 }
             }
