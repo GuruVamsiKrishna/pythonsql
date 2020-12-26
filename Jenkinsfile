@@ -42,6 +42,7 @@ pipeline{
                 ssh ubuntu@52.66.82.14 docker ps -a
                 ssh ubuntu@52.66.82.14 docker logs web1
                 """
+                }
             }
         }
     }
